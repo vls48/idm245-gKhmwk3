@@ -14,15 +14,48 @@ gameObj.Preloader.prototype = {
             this.load.image('cat', 'assets/cat.png');
             this.load.image('logo', 'assets/logo.png');
             this.load.image('heart', 'assets/pixel-heart.png');
+		 //load sprite sheets
+            this.load.spritesheet('play', 'assets/play.png', 223, 90);
+         //load fonts
+            this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
- 
+         //WINS
+            this.load.image('backgroundwater','assets/bgwater.jpg');
+            this.load.image('wintitle', 'assets/winscreen.png');
+            this.load.image('win', 'assets/wincat.png');
+
 
             //load sprite sheets
-            this.load.spritesheet('play', 'assets/play.png', 223, 90);
+            this.load.spritesheet('playagain', 'assets/playagain.png', 223, 90);
+
+        //PLAY
+         	//load graphics
+            this.load.image('slimecat','assets/slimecat.png');
+            this.load.image('freecat','assets/cat.png');
+            this.load.image('bucket', 'assets/bucket.png');
+            this.load.image('bottomslime', 'assets/bottomslime.png');
+            this.load.image('gun', 'assets/squirtgun.png');
+            this.load.image('water', 'assets/water.png');
+            this.load.image('counter', 'assets/wincat.png');
+            this.load.image('bg2', 'assets/bg2.png');
+
+        //LOSE 
+        	 //load graphics
+            this.load.image('backgroundlose','assets/losebg.png');
+            this.load.image('ohno', 'assets/ohno.png');
+            this.load.image('win', 'assets/wincat.png');
 
 
-            //load fonts
-            this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+            //load sprite sheets
+            this.load.spritesheet('play', 'assets/playagain.png', 223, 90);
+            this.load.spritesheet('winbut', 'assets/win.png', 108, 90);
+            this.load.spritesheet('losebut', 'assets/lose.png', 108, 90);
+        //INSTRUCTIONS
+            //load graphics
+
+            //load sprite sheets
+            this.load.spritesheet('go', 'assets/go.png', 223, 90);
+
 	},
 	create: function () {
 		this.state.start('Main');
