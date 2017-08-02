@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Goop Kittens</title>
+  <!--Add Phaser Framework library-->
+  <script src="phaser.min.js"></script>
+  <!--Add custom stylesheet-->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="phaser-canvas"></div>
+  <!--Custom Javascript-->
+  <script type="text/javascript">
+    window.onload = function() {
+      var game = new Phaser.Game(720, 740, Phaser.AUTO, 'phaser-canvas', {
+        preload: preload,
+        create: create
+      });
+
+      //  The Google WebFont Loader will look for this object, so create it before loading the script.
+        WebFontConfig = {
+
+            //  'active' means all requested fonts have finished loading
+            //  We set a 1 second delay before calling 'createText'.
+            //  For some reason if we don't the browser cannot render the text the first time it's created.
+            //active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+            //  The Google Fonts we want to load (specify as many as you like in the array)
+            google: {
+              families: ['Revalia', 'Zilla Slab', '3x5']
+            }
+
+        };
+      
+      function preload () {
+
+            //load graphics
+            game.load.image('backgroundslime','assets/bg.jpg');
+            game.load.image('backgroundwater','assets/bgwater.jpg');
+            game.load.image('arrowsx1', 'assets/arrowsx1.png');
+            game.load.image('point', 'assets/point.png');
+            game.load.image('title', 'assets/GOOPkittens.png');
+            game.load.image('cat', 'assets/cat.png');
+            game.load.image('logo', 'assets/logo.png');
+            game.load.image('heart', 'assets/pixel-heart.png');
+
+ 
+
+            //load sprite sheets
+            game.load.spritesheet('play', 'assets/play.png', 223, 90);
+
+
+            //load fonts
+            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+      } // end preload 
+      
+      function create () {
+        // add graphics!
+        var spBackground = game.add.sprite(0, 0, 'backgroundslime');
+        var spLogo = game.add.sprite(game.world.centerX, 70, 'logo');
+        spLogo.anchor.setTo(.5, 0);
+        spLogo.scale.setTo(.8);
+ 
+
+
+        var spTitle = game.add.sprite(game.world.centerX, 270, 'title');
+        spTitle.anchor.setTo(0.5, 0);
+
+        // add text stylings!
+         var generalStyle = {
+          wordWrapWidth: 290,
+          font: '16px Courier',
+          fill: '#263223',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle2 = {
+          wordWrapWidth: 500,
+          font: '16px Courier',
+          fill: '#263223',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle3 = {
+          width: '150px',
+          font: '20px 3x5',
+          fill: '#263223',
+          align: 'center'
+        };
+
+        // actual text 
+       
+        // add buttons!
+        var btPlay = game.add.button(game.world.centerX, 500, 'play', actionOnClick, this, 1, 0, 2);
+        btPlay.scale.setTo(.8);
+        btPlay.anchor.setTo(.5, 0);
+
+        
+      } // end create 
+
+      // end create text 
+
+      function actionOnClick(){
+        console.log('works');
+      }
+      
+    }; // end window.onload
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+

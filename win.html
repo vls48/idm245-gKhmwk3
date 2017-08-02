@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Goop Kittens</title>
+  <!--Add Phaser Framework library-->
+  <script src="phaser.min.js"></script>
+  <!--Add custom stylesheet-->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="phaser-canvas"></div>
+  <!--Custom Javascript-->
+  <script type="text/javascript">
+    window.onload = function() {
+      var game = new Phaser.Game(720, 740, Phaser.AUTO, 'phaser-canvas', {
+        preload: preload,
+        create: create
+      });
+
+      //  The Google WebFont Loader will look for this object, so create it before loading the script.
+        WebFontConfig = {
+
+            //  'active' means all requested fonts have finished loading
+            //  We set a 1 second delay before calling 'createText'.
+            //  For some reason if we don't the browser cannot render the text the first time it's created.
+            active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+            //  The Google Fonts we want to load (specify as many as you like in the array)
+            google: {
+              families: ['Revalia', 'Zilla Slab', '3x5']
+            }
+
+        };
+      
+      function preload () {
+
+            //load graphics
+            game.load.image('backgroundwater','assets/bgwater.jpg');
+            game.load.image('title', 'assets/winscreen.png');
+            game.load.image('heart', 'assets/pixel-heart.png');
+            game.load.image('win', 'assets/wincat.png');
+
+
+            //load sprite sheets
+            game.load.spritesheet('play', 'assets/playagain.png', 223, 90);
+
+
+            //load fonts
+            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+      } // end preload 
+      
+      function create () {
+        // add graphics!
+        var spBackground = game.add.sprite(0, 0, 'backgroundwater');
+        var spTitle = game.add.sprite(game.world.centerX, 20, 'title');
+        spTitle.anchor.setTo(0.5, 0);
+        spTitle.scale.setTo(.8);
+
+        var spHeart = game.add.sprite(390, 545, 'heart');
+
+        var spHeart2 = game.add.sprite(0, 0, 'heart').alignTo(spHeart, Phaser.RIGHT_CENTER, 16);
+
+        var wincat = game.add.sprite(410, 435, 'win');
+
+
+        // add text stylings!
+         var generalStyle = {
+          wordWrapWidth: 450,
+          font: '18px Courier',
+          fill: '#263223',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle2 = {
+          wordWrapWidth: 500,
+          font: '18px Courier',
+          fill: '#263223',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle3 = {
+          width: '150px',
+          font: '20px 3x5',
+          fill: 'white',
+          align: 'left'
+        };
+
+        // actual text 
+        var txtMove = game.add.text(250, 500, 'Time Survived:', generalStyle);
+         var txtMove = game.add.text(410, 500, '1:30', generalStyle3);
+        var txtPoint = game.add.text(250, 450, 'Kittens Saved:', generalStyle);
+        var txtPoint = game.add.text(460, 450, 'x13', generalStyle3);
+        var txtLives = game.add.text(250, 550, 'Hearts Left:', generalStyle);
+
+        // add buttons!
+        var btPlay = game.add.button(260, 610, 'play', actionOnClick, this, 1, 0, 2);
+
+        
+      } // end create 
+
+  
+
+      function actionOnClick(){
+        console.log('works');
+      }
+      
+    }; // end window.onload
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+

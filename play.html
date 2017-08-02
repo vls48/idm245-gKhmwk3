@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Goop Kittens</title>
+  <!--Add Phaser Framework library-->
+  <script src="phaser.min.js"></script>
+  <!--Add custom stylesheet-->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="phaser-canvas"></div>
+  <!--Custom Javascript-->
+  <script type="text/javascript">
+    window.onload = function() {
+      var game = new Phaser.Game(720 , 740, Phaser.AUTO, 'phaser-canvas', {
+        preload: preload,
+        create: create
+      });
+
+      //  The Google WebFont Loader will look for this object, so create it before loading the script.
+        WebFontConfig = {
+
+            //  'active' means all requested fonts have finished loading
+            //  We set a 1 second delay before calling 'createText'.
+            //  For some reason if we don't the browser cannot render the text the first time it's created.
+            //active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+            //  The Google Fonts we want to load (specify as many as you like in the array)
+            google: {
+              families: ['Revalia', 'Zilla Slab', '3x5']
+            }
+
+        };
+      
+      function preload () {
+
+            //load graphics
+            game.load.image('slimecat','assets/slimecat.png');
+            game.load.image('freecat','assets/cat.png');
+            game.load.image('bucket', 'assets/bucket.png');
+            game.load.image('bottomslime', 'assets/bottomslime.png');
+            game.load.image('heart', 'assets/pixel-heart.png');
+            game.load.image('gun', 'assets/squirtgun.png');
+            game.load.image('water', 'assets/water.png');
+            game.load.image('counter', 'assets/wincat.png');
+            game.load.image('cat', 'assets/cat.png');
+            game.load.image('bg2', 'assets/bg2.png');
+
+
+            //load sprite sheets
+
+
+            //load fonts
+            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+
+      } // end preload 
+      
+      function create () {
+        var spBG = game.add.sprite(0, 0, 'bg2');
+
+        // add graphics!
+        var spSlimeCat = game.add.sprite(450, 100, 'slimecat');
+        var spSlimeCat1 = game.add.sprite(130, -25, 'slimecat');
+        var spFreeCat = game.add.sprite(80, 370, 'freecat');
+        var spGun = game.add.sprite(105, 460, 'gun');
+        var spBucket = game.add.sprite(60, 535, 'bucket');
+        var spBottom = game.add.sprite(game.world.centerX, 640, 'bottomslime');
+        spBottom.anchor.setTo(.5, 0);
+
+        var spHeart = game.add.sprite(game.world.centerX - 100, 688, 'heart');
+        var spHeart2 = game.add.sprite(0, 0, 'heart').alignTo(spHeart, Phaser.RIGHT_CENTER, 16);
+        var spHeart3 = game.add.sprite(0, 0, 'heart').alignTo(spHeart2, Phaser.RIGHT_CENTER, 16);
+        var spHeart4 = game.add.sprite(0, 0, 'heart').alignTo(spHeart3, Phaser.RIGHT_CENTER, 16);
+        var spHeart5 = game.add.sprite(0, 0, 'heart').alignTo(spHeart4, Phaser.RIGHT_CENTER, 16);
+        var spHeart6 = game.add.sprite(0, 0, 'heart').alignTo(spHeart5, Phaser.RIGHT_CENTER, 16);
+
+        
+        
+        var spWater = game.add.sprite(340, 340, 'water');
+        spWater.scale.setTo(.5);
+        spWater.angle = -135;
+        var spCounter = game.add.sprite( 620, 685, 'counter');
+
+        // add text stylings!
+         var generalStyle = {
+          wordWrapWidth: 450,
+          font: '18px 3x5',
+          fill: 'white',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle2 = {
+          wordWrapWidth: 500,
+          font: '28px 3x5',
+          fill: 'white',
+          align: 'center',
+          wordWrap: true
+        };
+
+        var generalStyle3 = {
+          width: '150px',
+          font: '20px 3x5',
+          fill: 'teal',
+          align: 'left'
+        };
+
+        // actual text 
+        var txtTimer = game.add.text(50, 684, '1:30', generalStyle2);
+        var txtRescue = game.add.text(600, 665, 'RESCUED', generalStyle);
+        var txtScore = game.add.text(670, 700, 'x0', generalStyle);
+
+
+        // add buttons!
+      
+
+        
+      } // end create 
+
+      
+      /*function createHearts() {
+        var i = 0;
+
+         while (i < 6){  
+          var spHeart = game.add.sprite(game.world.centerX + 20, 688, 'heart');
+          i++;
+         }
+      }*/
+
+    }; // end window.onload
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
