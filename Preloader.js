@@ -24,6 +24,9 @@ gameObj.Preloader.prototype = {
             this.load.image('wintitle', 'assets/winscreen.png');
             this.load.image('win', 'assets/wincat.png');
 
+            this.load.spritesheet('winscreenanim', 'assets/winscreenanim.png', 563, 457, 4);
+
+
 
             //load sprite sheets
             this.load.spritesheet('playagain', 'assets/playagain.png', 223, 90);

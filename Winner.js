@@ -5,9 +5,8 @@ gameObj.Winner.prototype = {
 		console.log('State-Winner');
 		 // add graphics!
         var spBackground = this.add.sprite(0, 0, 'backgroundwater');
-        var spTitle = this.add.sprite(this.world.centerX, 20, 'wintitle');
-        spTitle.anchor.setTo(0.5, 0);
-        spTitle.scale.setTo(.8);
+        //var spTitle = this.add.sprite(this.world.centerX, 20, 'wintitle');
+       
 
         var spHeart = this.add.sprite(390, 545, 'heart');
 
@@ -16,6 +15,18 @@ gameObj.Winner.prototype = {
         var wincat = this.add.sprite(410, 435, 'win');
 
 
+
+        // Add walking mummy
+       var sWin = this.add.sprite(this.world.centerX, 20, 'winscreenanim');
+        //  Here we add a new animation called 'walk'
+        //  Because we didn't give any other parameters it's going to make an animation from all available frames in the 'mummy' sprite sheet
+        var walk = sWin.animations.add('walk');
+        //  And this starts the animation playing by using its key ("walk")
+        //  30 is the frame rate (30fps)
+        //  true means it will loop when it finishes
+        sWin.animations.play('walk', 3, true);
+        sWin.anchor.setTo(0.5, 0);
+        sWin.scale.setTo(.8);
         // add text stylings!
          var generalStyle = {
           wordWrapWidth: 450,
